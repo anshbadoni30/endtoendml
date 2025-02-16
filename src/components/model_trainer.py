@@ -61,7 +61,9 @@ class ModelTrainer:
                 list(model_report.values()).index(best_model_score)
             ]
 
-            best_model=models[best_model_name]
+            best_model=models[best_model_name] #In this line we retrived the best model from model dictionary which is before training so you can think that we retrived untrained best model 
+            ## But actually when this model dict goes in evaluate_models fucntion both models dictionary and models parameter in evalute_models  fucntion pointing the same object of models
+            ##So,there is a change at inplace in models dictionary that they become trained models after running evaluate_models function
 
             if best_model_score<0.6:
                 raise CustomException ("No best model found")
